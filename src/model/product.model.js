@@ -8,13 +8,13 @@ exports.findAll = async function() {
         'group by p.product_id');
 }
 
-// // Find product detail by id => return product detail page
-// exports.findProductDetail = async function(product_detail_id) {
-//     return await dbconfig.select('SELECT * FROM product_detail pd ' +
-//         'join product p on pd.product_id = p.product_id ' +
-//         'join specifications spec on pd.specifications_id = spec.specifications_id ' +
-//         'where product_detail_id = \'' + product_detail_id + '\'');
-// }
+// Find product detail by color and version => return product detail page
+exports.findProductDetail = async function(product_id, version, color) {
+    return await dbconfig.select('SELECT * FROM product p ' +
+        'join product_detail pd on p.product_id = pd.product_id ' +
+        'join specifications spec on pd.specifications_id = spec.specifications_id ' +
+        'where p.product_id = \'' + product_id + '\' and pd.color = \'' + color + '\' and pd.version = \'' + version + '\'');
+}
 
 // Find all version of product by product id => return product detail page
 exports.findAllVersion = async function(product_id) {
@@ -25,13 +25,6 @@ exports.findAllVersion = async function(product_id) {
         'order by convert(pd.version, decimal) DESC');
 }
 
-// Find product detail by color and version => return product detail page
-exports.findProductDetail = async function(product_id, version, color) {
-    return await dbconfig.select('SELECT * FROM product p ' +
-        'join product_detail pd on p.product_id = pd.product_id ' +
-        'join specifications spec on pd.specifications_id = spec.specifications_id ' +
-        'where p.product_id = \'' + product_id + '\' and pd.color = \'' + color + '\' and pd.version = \'' + version + '\'');
-}
 // Find all product by product id (distinct by color) => return product detail page
 exports.findProductById = async function(product_id) {
     return await dbconfig.select('SELECT distinct pd.product_detail_id, pd.image_intro, pd.color, pd.version, pd.product_id ' +
@@ -39,7 +32,6 @@ exports.findProductById = async function(product_id) {
         'where pd.product_id = \'' + product_id + '\'' +
         'group by pd.image_intro');
 }
-
 
 exports.count = async function() {
     const result = await dbconfig.select('SELECT COUNT(*) AS total FROM product');
