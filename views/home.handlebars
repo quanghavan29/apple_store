@@ -50,7 +50,7 @@
             {{#each this.products}}
             <li class=" item ajaxed" data-index="1" data-id="213031" data-issetup="0" data-maingroup="13"
                 data-subgroup="1491" data-type="1" data-vehicle="1" data-productcode="0131491002273">
-                <a href="#" data-s="Nomal"
+                <a href="product-detail?product_detail_id={{product_detail_id}}&product_id={{product_id}}&version={{version}}&color={{color}}" data-s="Nomal"
                     data-scenario="S&#x1EA3;n ph&#x1EA9;m b&#xEC;nh th&#x1B0;&#x1EDD;ng kh&#xF4;ng k&#x1ECB;ch b&#x1EA3;n"
                     data-site="1" data-pro="3" data-cache="True"
                     data-first="mwg.business.Services.ProductService.GetProductList">
@@ -73,7 +73,7 @@
                         <span class="percent">-{{sale}}%</span>
                         {{/if}}
                     </div>
-                    <strong class="price">{{real_price}}.000&#x20AB;</strong>
+                    <strong class="price">{{present_price}}.000&#x20AB;</strong>
                 </a>
                 <div class="item-rating">
                     <p>
