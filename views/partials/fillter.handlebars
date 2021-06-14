@@ -1,7 +1,7 @@
 <div class="box-filter  block-scroll-main">
     <section>
         <div class=" scrolling_inner scroll-right">
-            <div class="box-filter block-scroll-main scrolling">
+            {{!-- <div class="box-filter block-scroll-main scrolling">
 
                 <div class="filter-total ">
                     <div class="filter-item__title jsTitle">
@@ -276,15 +276,24 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
-        <div class="box-quicklink child-filter-outer block-scroll-main">
+        <div></div>
+        <div class="box-quicklink  block-scroll-main">
+            {{#each categories}}
+            <a href="../fillter?category_id={{category_id}}" data-href="dtdd-apple-iphone" data-index="0"
+                class="box-quicklink__item bd-radius quicklink-logo {{#if isActive}} check {{/if}}">
+                <img src="../images/{{logo}}" width="30" class="no-text">
+            </a>
+            {{/each}}
+        </div>
+        {{!-- <div class="box-quicklink child-filter-outer block-scroll-main">
             <div id="filter-follow-manu" class="props props-child">
                 {{#each this.fillters}}
                 <a href="../home?product_id={{value}}" data-smooth="1" data-href="12-series" data-id="180894" class="c-btnbox 
                 {{#if isActive}}check{{/if}}">{{text}}</a>
                 {{/each}}
             </div>
-        </div>
+        </div> --}}
     </section>
 </div>

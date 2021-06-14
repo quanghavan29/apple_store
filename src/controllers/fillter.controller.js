@@ -3,14 +3,14 @@ const Category = require('../model/category.model');
 const session = require('express-session');
 
 // return home page
-exports.home = async function (req, res) {
+exports.fillter = async function (req, res) {
 
     // get category id, isSale, isNew, isCredit, isMonopoly from request (fillters)
-    let category_id = '';
-    let isSale = 'false';
-    let isCredit = 'false';
-    let isMonopoly = 'false';
-    let isNew = 'false';
+    let category_id = req.query.category_id || req.session.category_id || '';
+    let isSale = req.query.isSale || req.session.isSale || 'false';
+    let isCredit = req.query.isCredit || req.session.isCredit || 'false';
+    let isMonopoly = req.query.isMonopoly || req.session.isMonopoly || 'false';
+    let isNew = req.query.isNew || req.session.isNew || 'false';
 
     // set session for each properties of fillter
     req.session.category_id = category_id;

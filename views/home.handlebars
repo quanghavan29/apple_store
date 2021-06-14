@@ -6,33 +6,65 @@
 <section id="categoryPage" data-id="42" data-name="&#x110;i&#x1EC7;n tho&#x1EA1;i" data-template="cate">
 
     <div class="box-sort ">
-        <p class="sort-total"><b>21</b> &#x110;i&#x1EC7;n tho&#x1EA1;i <strong class="manu-sort">iPhone
-                (Apple)</strong></p>
-        <div class="box-checkbox extend  ">
-            <a href="javascript:;" data-href="" data-type="sp2020" class="c-checkitem ">
+        <p class="sort-total"><b>Hiện có {{this.product.totalProduct}}</b> Điện thoại <strong class="manu-sort">
+                {{this.product.name}}
+            </strong></p>
+        <div class="box-checkbox extend">
+
+            {{#if this.isSale}}
+            <a href="../fillter?isSale=false" data-type="sp2020" class="c-checkitem active">
                 <span class="tick-checkbox"></span>
                 <p>Giảm giá</p>
             </a>
-            <a href="javascript:;" data-href="-tra-gop-0-phan-tram" data-type="installment0" class="c-checkitem active">
+            {{else}}
+            <a href="../fillter?isSale=true" data-type="sp2020" class="c-checkitem">
+                <span class="tick-checkbox"></span>
+                <p>Giảm giá</p>
+            </a>
+            {{/if}}
+
+            {{#if this.isCredit}}
+            <a href="../fillter?isCredit=false" data-type="installment0" class="c-checkitem active">
                 <span class="tick-checkbox"></span>
                 <p>Trả Góp 0%</p>
             </a>
-            <a href="javascript:;" data-href="" data-type="monopoly" class="c-checkitem">
+            {{else}}
+            <a href="../fillter?isCredit=true" data-type="installment0" class="c-checkitem">
+                <span class="tick-checkbox"></span>
+                <p>Trả Góp 0%</p>
+            </a>
+            {{/if}}
+
+            {{#if this.isMonopoly}}
+            <a href="../fillter?isMonopoly=false" data-type="monopoly" class="c-checkitem active">
                 <span class="tick-checkbox"></span>
                 <p>Độc quyền</p>
             </a>
-            <a href="javascript:;" data-href="-moi-ra-mat" data-type="new" data-prop="0" data-newv2="False"
-                class="c-checkitem ">
+            {{else}}
+            <a href="../fillter?isMonopoly=true" data-type="monopoly" class="c-checkitem">
                 <span class="tick-checkbox"></span>
-                <p>M&#x1EDB;i</p>
+                <p>Độc quyền</p>
             </a>
+            {{/if}}
+
+            {{#if this.isNew}}
+            <a href="../fillter?isNew=false" data-type="new" class="c-checkitem active">
+                <span class="tick-checkbox"></span>
+                <p>Mới</p>
+            </a>
+            {{else}}
+            <a href="../fillter?isNew=true" data-type="new" class="c-checkitem">
+                <span class="tick-checkbox"></span>
+                <p>Mới</p>
+            </a>
+            {{/if}}
 
         </div>
         <div class="sort-select ">
             <p class="click-sort">Xếp theo: <span class="sort-show">N&#x1ED5;i b&#x1EAD;t</span></p>
             <div class="sort-select-main sort ">
                 <p><a href="javascript:;" class="check" data-id="9"><i></i>Nổi bật</a></p>
-                <p><a href="javascript:;" class="" data-id="5"><i></i>% Giảm</a></p>
+                <p><a href="" class="" data-id="5"><i></i>% Giảm</a></p>
                 <p><a href="javascript:;" class="" data-id="3"><i></i>Giá cao đến thấp</a></p>
                 <p><a href="javascript:;" class="" data-id="2"><i></i>Giá thấp đến cao</a></p>
 

@@ -9,12 +9,31 @@ exports.findAll = async function() {
 }
 
 // Find all product by product id=> return home page
-exports.findAllByProductId = async function(product_id) {
-    return await dbconfig.select('SELECT distinct * FROM product p ' +
+exports.findAllByCategory = async function(category_id, isSale, isCredit, isMonopoly, isNew) {
+
+    let query = 'SELECT distinct * FROM product p ' +
+        'join category c on c.category_id = p.category_id ' +
         'join product_detail pd on p.product_id = pd.product_id ' +
         'join specifications spec on pd.specifications_id = spec.specifications_id ' +
-        'where p.product_id like \'%' + product_id + '%\'' +
-        'group by p.product_id');
+        'where c.category_id like \'%' + category_id + '%\' ';
+    if (isSale === 'true') {
+        query += 'and pd.sale > 0 ';
+    }
+    if (isCredit === 'true') {
+        query += 'and p.is_credit = true ';
+    }
+
+    if (isMonopoly === 'true') {
+        query += 'and p.is_monopoly = true ';
+    }
+
+    if (isNew === 'true') {
+        query += 'and p.MFYear = 2021 '
+    }
+
+    query += 'group by p.product_id'
+
+    return await dbconfig.select(query);
 }
 
 // Find product detail by color and version => return product detail page

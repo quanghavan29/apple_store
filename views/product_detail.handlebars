@@ -158,7 +158,9 @@
                             {{#if this.product.isSale}}
                             <p class="box-price-old">{{this.product.old_price}}.000&#x20AB;</p>
                             {{/if}}
+                            {{#if this.product.is_credit}}
                             <span class="label label--black">Trả góp 0%</span>
+                            {{/if}}
                         </div>
                     </div>
                     <div class="block block-price1">
