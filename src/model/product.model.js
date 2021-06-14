@@ -8,6 +8,15 @@ exports.findAll = async function() {
         'group by p.product_id');
 }
 
+// Find all product by product id=> return home page
+exports.findAllByProductId = async function(product_id) {
+    return await dbconfig.select('SELECT distinct * FROM product p ' +
+        'join product_detail pd on p.product_id = pd.product_id ' +
+        'join specifications spec on pd.specifications_id = spec.specifications_id ' +
+        'where p.product_id like \'%' + product_id + '%\'' +
+        'group by p.product_id');
+}
+
 // Find product detail by color and version => return product detail page
 exports.findProductDetail = async function(product_id, version, color) {
     return await dbconfig.select('SELECT * FROM product p ' +
@@ -25,8 +34,8 @@ exports.findAllVersion = async function(product_id) {
         'order by convert(pd.version, decimal) DESC');
 }
 
-// Find all product by product id (distinct by color) => return product detail page
-exports.findProductById = async function(product_id) {
+// Find all color of product by id (distinct by color) => return product detail page
+exports.findAllColor = async function(product_id) {
     return await dbconfig.select('SELECT distinct pd.product_detail_id, pd.image_intro, pd.color, pd.version, pd.product_id ' +
         'FROM product_detail pd ' +
         'where pd.product_id = \'' + product_id + '\'' +

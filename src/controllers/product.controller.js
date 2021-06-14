@@ -41,14 +41,14 @@ exports.detail = async function (req, res) {
     }
 
     // get all product by id distinct by color
-    const products = await Product.findProductById(product.product_id);
+    const colors = await Product.findAllColor(product.product_id);
     // set isActive for product that has selected
-    for (const p of products) {
-        if (p.color === product.color) {
-            p.isActive = true;
-            present_color = p.color;
+    for (const c of colors) {
+        if (c.color === product.color) {
+            c.isActive = true;
+            present_color = c.color;
         }
-        p.version = present_version;
+        c.version = present_version;
     }
 
     for (const v of versions) {
@@ -59,6 +59,6 @@ exports.detail = async function (req, res) {
         layout: false,
         product: product,
         versions: versions,
-        products: products,
+        colors: colors,
     });
 }
