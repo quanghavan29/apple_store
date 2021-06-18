@@ -14,16 +14,389 @@
 
     {{> header}}
 
+    {{#if this.cartEmpty}}
     <section>
         <div class="cartempty" style="text-align: center;">
             <i class="cartnew-empty"><img src="../images/cart-empty.png"></i>
             <p style="padding: 12px;">Không có sản phẩm nào trong giỏ hàng</p>
             <a href="../home" class="backhome">Về trang chủ</a>
-            <p style="font-size: 14px; padding: 12px;">Khi cần trợ giúp vui lòng gọi <a href="tel:18001060;">0968.904.962</a>
+            <p style="font-size: 14px; padding: 12px;">Khi cần trợ giúp vui lòng gọi <a
+                    href="tel:18001060;">0968.904.962</a>
                 hoặc <a href="">quanghavan29@gmail.com</a> (7h30 - 22h)</p>
         </div>
     </section>
+    {{/if}}
+    <div class="cart">
+        <!---->
+        <div class="yourCart top-content"><a href="https://www.thegioididong.com" class="buymore">Mua thêm sản phẩm
+                khác</a><span>Giỏ hàng của bạn</span></div>
+        <div class="middleCart">
+            <ul class="listing-cart">
+                {{#each this.cart_list}}
+                <li class="product-item" style="border-bottom: 1px solid #dddddd;">
+                    <div class="imgsp">
+                        <a href="/dtdd/iphone-12" target="_blank">
+                            <img src="../images/product/intro/iPhone_12_Pro.jpg" width="90%">
+                        </a>
+                    </div>
+                    <div class="infosp" style="position: relative;">
+                        <div class="left" style="position: absolute; left: 0px;">
+                            <div class="name-price">
+                                <div class="name-container">
+                                    <a href="" class="product-item__name"
+                                        style="color: #333; font-weight: 700; width: 300px;">
+                                        Điện thoại iPhone 12 Pro Max
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="choose-color" style="padding-top: 15px; margin-bottom: 15px;">
+                                <aside><label style="color: #333333; font-weight: 600;">Color: Green</label>
+                                </aside>
+                            </div>
+                            <a href="" style="color: #F30C28;"> Xóa </a>
+                        </div>
+                        <div class="right" style="position: absolute; right: 0px;">
+                            <div style="padding-left: 15px; padding-bottom: 15px;">
+                                <span style="color: #F30C28;"> 21.990.000₫</span><br />
+                                <strike>23.490.000₫</strike>
+                            </div>
+                            <div class="choosenumber">
+                                <div class="minus" style="pointer-events: all;">
+                                    <div style="border: none; cursor: pointer;" id="modal-minus">
+                                        <img src="../images/minus.jpg" width="100%">
+                                    </div>
+                                </div>
+                                <input type="text" class="number" value="1" style="border: none;" id="modal-quantity"
+                                    name="quantity" />
+                                <div class="plus" style="pointer-events: all;">
+                                    <div style="border: none; cursor: pointer;" id="modal-plus">
+                                        <img src="../images/plus.jpg" width="100%">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {{/each}}
+            </ul>
+            <div class="area-total" style="border-bottom: 1px solid #cccccc;">
+                <div>
+                    <p style="padding: 10px 0px;">Tạm tính (3 sản phẩm):</p>
+                    <strong>Tổng tiền:</strong>
+                </div>
 
+                <div style="padding-bottom: 10px;">
+                    <p style="padding: 10px 0px;">58.970.000₫</p>
+                    <strong style="color: #F30C28;">58.970.000₫</strong>
+                </div>
+            </div>
+            <div class="infor-customer">
+                <h4>THÔNG TIN KHÁCH HÀNG:</h4>
+                <form class="form-customer">
+                    <div class="sex-customer gender">
+                        <input type="radio" name="" id="" style="cursor: pointer;"> Anh
+                        <input type="radio" name="" id="" style="margin-left: 10px; cursor: pointer;"> Chị
+                    </div>
+                    <div class="fillinform">
+                        <div class="fillname"><input placeholder="Họ và Tên" maxlength="50"
+                                class="capitalize untouched pristine required">
+                            <!---->
+                        </div>
+                        <div class="fillname"><input placeholder="Số điện thoại" type="tel" maxlength="10"
+                                class="untouched pristine required">
+                            <!---->
+                        </div>
+                    </div>
+                </form>
+            </div>
+            {{!-- <div class="choosegetgoods">
+                <h4>Chọn cách thức nhận hàng:</h4>
+                <!----><input type="hidden" value="2">
+                <div class="click-choose">
+                    <div data-tab="tab-1" class="choose-link current"><i class="cartnew-choose"></i> <span>Giao tận
+                            nơi</span></div>
+                    <div data-tab="tab-2" class="choose-link"><i class="cartnew-choose"></i> <span>Nhận tại siêu
+                            thị</span></div>
+                </div>
+                <div id="tab-1" class="choose-content current">
+                    <!---->
+                    <div class="deli-address">
+                        <form class="active">
+                            <p>Chọn địa chỉ để biết thời gian nhận hàng và phí vận chuyển (nếu có)</p>
+                            <div class="cntry-district">
+                                <div class="btn-click country"><button type="button" class="">Hà Nội</button>
+                                    <!--fragment#d7f61b61c2#head--><input fragment="d7f61b61c2" type="hidden"
+                                        class="ddlist" value="5">
+                                    <div class="select" fragment="d7f61b61c2" style="display: none;">
+                                        <div class="boxsearch"><input placeholder="Nhập tỉnh, thành để tìm nhanh"><a
+                                                href="javascript:;"><i class="cartnew-search"></i></a></div>
+                                        <div class="listName" style="position: relative;">
+                                            <aside></aside>
+                                            <aside></aside>
+                                            <div class="resize-triggers">
+                                                <div class="expand-trigger">
+                                                    <div style="width: 1px; height: 1px;"></div>
+                                                </div>
+                                                <div class="contract-trigger"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!---->
+                                    <!--fragment#d7f61b61c2#tail-->
+                                </div>
+                                <div class="btn-click district"><button type="button" class="">Chọn Quận /
+                                        Huyện</button>
+                                    <!--fragment#10dd2c58b80#head--><input fragment="10dd2c58b80" type="hidden"
+                                        class="ddlist" value="0">
+                                    <div class="select" fragment="10dd2c58b80" style="display: none;">
+                                        <div class="boxsearch"><input placeholder="Nhập quận, huyện để tìm nhanh"><a
+                                                href="javascript:;"><i class="cartnew-search"></i></a></div>
+                                        <div class="listName" style="position: relative;">
+                                            <aside></aside>
+                                            <aside></aside>
+                                            <div class="resize-triggers">
+                                                <div class="expand-trigger">
+                                                    <div style="width: 1px; height: 1px;"></div>
+                                                </div>
+                                                <div class="contract-trigger"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!---->
+                                    <!--fragment#10dd2c58b80#tail-->
+                                </div>
+                            </div>
+                            <div class="wards disable"><button type="button" disabled="disabled" class="">Chọn
+                                    Phường / Xã</button>
+                                <!--fragment#13065d6c5ef#head--><input fragment="13065d6c5ef" type="hidden"
+                                    class="ddlist" value="0">
+                                <div class="select" fragment="13065d6c5ef" style="display: none;">
+                                    <div class="boxsearch"><input placeholder="Nhập phường, xã để tìm nhanh"><a
+                                            href="javascript:;"><i class="cartnew-search"></i></a></div>
+                                    <div class="listName" style="position: relative;">
+                                        <aside><span class="active">Chọn Phường / Xã</span></aside>
+                                        <aside></aside>
+                                        <div class="resize-triggers">
+                                            <div class="expand-trigger">
+                                                <div style="width: 1px; height: 1px;"></div>
+                                            </div>
+                                            <div class="contract-trigger"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!---->
+                                <!--fragment#13065d6c5ef#tail-->
+                            </div>
+                            <div class="filladdress"><input placeholder="Số nhà, tên đường" maxlength="255"
+                                    class="untouched pristine required">
+                                <!---->
+                            </div>
+                        </form>
+                        <!--fragment#104ff8f1635#head-->
+                        <!---->
+                        <!---->
+                        <!---->
+                        <!--fragment#104ff8f1635#tail-->
+                    </div>
+                </div>
+                <div id="tab-2" class="choose-content">
+                    <!---->
+                    <aside>
+                        <div class="deli-address">
+                            <div class="cntry-district">
+                                <div class="btn-click country"><button type="button" class="">Hà Nội</button>
+                                    <!--fragment#abcf697c28#head--><input fragment="abcf697c28" type="hidden"
+                                        class="ddlist" value="5">
+                                    <div class="select" fragment="abcf697c28" style="display: none;">
+                                        <div class="boxsearch"><input placeholder="Nhập tỉnh, thành để tìm nhanh"><a
+                                                href="javascript:;"><i class="cartnew-search"></i></a></div>
+                                        <div class="listName" style="position: relative;">
+                                            <aside></aside>
+                                            <aside></aside>
+                                            <div class="resize-triggers">
+                                                <div class="expand-trigger">
+                                                    <div style="width: 1px; height: 1px;"></div>
+                                                </div>
+                                                <div class="contract-trigger"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!---->
+                                    <!--fragment#abcf697c28#tail-->
+                                </div>
+                                <div class="btn-click district"><button type="button" class="">Chọn Quận /
+                                        Huyện</button>
+                                    <!--fragment#12c18ea65ac#head--><input fragment="12c18ea65ac" type="hidden"
+                                        class="ddlist" value="0">
+                                    <div class="select" fragment="12c18ea65ac" style="display: none;">
+                                        <div class="boxsearch"><input placeholder="Nhập quận, huyện để tìm nhanh"><a
+                                                href="javascript:;"><i class="cartnew-search"></i></a></div>
+                                        <div class="listName" style="position: relative;">
+                                            <aside></aside>
+                                            <aside></aside>
+                                            <div class="resize-triggers">
+                                                <div class="expand-trigger">
+                                                    <div style="width: 1px; height: 1px;"></div>
+                                                </div>
+                                                <div class="contract-trigger"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!---->
+                                    <!--fragment#12c18ea65ac#tail-->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="choose-address">
+                            <ul id="listAvailableStores" class=""></ul><a href="javascript:;" class="hide">Xem thêm
+                                -2 siêu thị</a><svg viewBox="0 0 455 80" version="1.1"
+                                preserveAspectRatio="xMidYMid meet" style="display: none;">
+                                <rect clip-path="url(#41qfjv29hkl)" x="0" y="0" width="455" height="80"
+                                    style="fill: url(&quot;#55bwajscpek&quot;);"></rect>
+                                <defs>
+                                    <clipPath id="41qfjv29hkl">
+                                        <rect x="48" y="8" rx="3" ry="3" width="88" height="6"></rect>
+                                        <rect x="48" y="26" rx="3" ry="3" width="52" height="6"></rect>
+                                        <rect x="0" y="56" rx="3" ry="3" width="410" height="6"></rect>
+                                        <rect x="0" y="72" rx="3" ry="3" width="380" height="6"></rect>
+                                        <rect x="0" y="88" rx="3" ry="3" width="178" height="6"></rect>
+                                        <circle cx="20" cy="20" r="20"></circle>
+                                    </clipPath>
+                                    <linearGradient id="55bwajscpek">
+                                        <stop offset="0%" stop-color="#cdcccb" stop-opacity="1">
+                                            <animate attributeName="offset" values="-2; 1" dur="2s"
+                                                repeatCount="indefinite"></animate>
+                                        </stop>
+                                        <stop offset="50%" stop-color="#ecebeb" stop-opacity="1">
+                                            <animate attributeName="offset" values="-1.5; 1.5" dur="2s"
+                                                repeatCount="indefinite"></animate>
+                                        </stop>
+                                        <stop offset="100%" stop-color="#cdcccb" stop-opacity="1">
+                                            <animate attributeName="offset" values="-1; 2" dur="2s"
+                                                repeatCount="indefinite"></animate>
+                                        </stop>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                        <!--fragment#14a7e711a53#head-->
+                        <div class="latch-order" fragment="14a7e711a53" style="display: none;"></div><span
+                            class="latch-order" fragment="14a7e711a53" style="display: none;"><span><input type="hidden"
+                                    value="false"></span>
+                            <div class="box-order error-order" style="display: none;">
+                                <ul></ul>
+                                <!---->
+                            </div>
+                            <div class="box-order error-order" style="display: none;">
+                                <ul></ul>
+                                <!---->
+                            </div>
+                        </span>
+                        <!--fragment#14a7e711a53#tail-->
+                    </aside>
+                </div>
+            </div>
+            <div class="choosegetgoods" style="display: none;">
+                <div id="tab-3" class="choose-content current">
+                    <aside>
+                        <div class="latch-order">
+                            <div class="box-order error-order">
+                                <ul>
+                                    <li><strong><b>Sản phẩm tạm hết hàng, vui lòng chọn màu hoặc sản phẩm
+                                                khác</b></strong><a href="/dtdd/samsung-galaxy-s21"
+                                            class="img-order"><img
+                                                data-src="https://cdn.tgdd.vn/Products/Images/42/220833/samsung-galaxy-s21-tim-200x200.jpg"
+                                                src="https://cdn.tgdd.vn/Products/Images/42/220833/samsung-galaxy-s21-tim-200x200.jpg"
+                                                width="40px" height="auto" loading="lazy" class="lazyload"></a><a
+                                            href="/dtdd/samsung-galaxy-s21" class="text-order"><a
+                                                href="/dtdd/samsung-galaxy-s21" target="_blank"
+                                                class="text-order__product-name">Điện thoại Samsung Galaxy S21
+                                                5G</a>
+                                            <div class="amount-color"><small>Màu: Tím</small><small>Số lượng:
+                                                    1</small></div>
+                                        </a></li>
+                                    <li>
+                                        <!----><a href="/dtdd/iphone-12" class="img-order"><img
+                                                data-src="https://cdn.tgdd.vn/Products/Images/42/213031/iphone-12-xanh-la-200x200.jpg"
+                                                src="https://cdn.tgdd.vn/Products/Images/42/213031/iphone-12-xanh-la-200x200.jpg"
+                                                width="40px" height="auto" loading="lazy" class="lazyload"></a><a
+                                            href="/dtdd/iphone-12" class="text-order"><a href="/dtdd/iphone-12"
+                                                target="_blank" class="text-order__product-name">Điện thoại iPhone
+                                                12 64GB</a>
+                                            <div class="amount-color"><small>Màu: Xanh lá</small><small>Số lượng:
+                                                    2</small></div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+            <div class="anotheroption"><input placeholder="Yêu cầu khác (không bắt buộc)">
+                <ul>
+                    <li><label class=""><i class="cartnew-select"></i><span>Gọi người khác nhận hàng (nếu
+                                có)</span></label>
+                        <form class="infouser" style="display: none;">
+                            <div class="cough">
+                                <!--fragment#6d5f2b7229#head--><input fragment="6d5f2b7229" type="hidden"><span
+                                    fragment="6d5f2b7229" class=""><i class="cartnew-choose"></i> Anh </span><span
+                                    fragment="6d5f2b7229" class=""><i class="cartnew-choose"></i> Chị </span>
+                                <!--fragment#6d5f2b7229#tail-->
+                                <!---->
+                            </div>
+                            <div class="infouser__inputs-container">
+                                <div class="fillinput halfwidth left"><input placeholder="Họ và tên người nhận"
+                                        maxlength="50" class="capitalize untouched pristine required">
+                                    <!---->
+                                </div>
+                                <div class="fillinput halfwidth left"><input placeholder="Số điện thoại người nhận"
+                                        type="tel" maxlength="10" class="untouched pristine required">
+                                    <!---->
+                                </div>
+                            </div>
+                        </form>
+                    </li>
+                    <!---->
+                    <li><label class=""><i class="cartnew-select"></i><span>Chuyển danh bạ, dữ liệu qua máy
+                                mới</span></label></li>
+                    <!---->
+                    <li><label class=""><i class="cartnew-select"></i><span>Xuất hóa đơn công ty</span></label>
+                        <form class="infocompany" style="display: none;">
+                            <div class="fillinput"><input placeholder="Tên công ty" maxlength="255"
+                                    class="untouched pristine required">
+                                <!---->
+                            </div>
+                            <div class="fillinput"><input placeholder="Địa chỉ công ty" maxlength="255"
+                                    class="untouched pristine required">
+                                <!---->
+                            </div>
+                            <div class="fillinput"><input placeholder="Mã số thuế" class="untouched pristine required">
+                                <!---->
+                            </div>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+            <div class="cate-printing-ink-note" style="display: none;">
+                <div class="cate-printing-ink-note__message"></div>
+            </div>
+            <div class="finaltotal">
+                <!---->
+                <!---->
+                <!---->
+                <div class="totalmoney"><strong>Tổng tiền:</strong><strong>58.970.000₫</strong></div>
+                <!---->
+                <!---->
+                <!---->
+                <!---->
+                <!----><button type="button" class=""><b style="text-transform:uppercase">Đặt hàng</b></button>
+                <!----><small>Bạn có thể chọn hình thức thanh toán sau khi đặt hàng</small>
+            </div> --}}
+        </div>
+        {{!-- <aside><small class="footCart">Bằng cách đặt hàng, bạn đồng ý với Điều khoản sử dụng của
+                Thegioididong</small></aside> --}}
+    </div>
 </body>
 
 </html>

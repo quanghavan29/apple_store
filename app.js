@@ -38,17 +38,10 @@ app.use('/product-detail', productRouter);
 const fillterRouter = require('./src/routes/fillter.router');
 app.use('/fillter', fillterRouter);
 
-app.listen(3000, () => {
-    console.log('http://localhost:3000/home');
-})
+// call router: cart router
+const cartRouter = require('./src/routes/cart.router');
+app.use('/cart', cartRouter);
 
-app.post('/add-to-cart', (req, res) => {
-    console.log(req.body.product_detail_id);
-    console.log(req.body.quantity);
-})
-
-app.get('/cart', (req, res) => {
-    res.render('cart', {
-        layout: false,
-    });
+app.listen(8000, () => {
+    console.log('http://localhost:8000/home');
 })

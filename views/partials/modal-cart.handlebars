@@ -14,7 +14,7 @@
                 {{/if}}
             </p>
         </div>
-        <form action="../add-to-cart" method="POST">
+        <form action="../cart" method="POST">
             <div class="choose-colorPro"><strong>Chọn màu:</strong>
                 <ul class="list-product">
                     {{#each this.colors}}
@@ -26,7 +26,7 @@
                         </div>
                         <div>
                             <input type="checkbox" style="margin-top: 10px; cursor: pointer;" 
-                                name="checkbox" id="checkbox"
+                                name="product_detail_id" id="checkbox"
                                 value="{{product_detail_id}}" onclick="onlyOne(this)"/><br />
                             <span>{{color}}</span>
                         </div>

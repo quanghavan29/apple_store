@@ -24,7 +24,7 @@
             </li>
             <li>
                 <span>›</span>
-                <a href="#">Điện thoại iPhone (Apple)</a>
+                <a href="#">Điện thoại {{this.product.category_name}}</a>
                 <meta property="position" content="2">
             </li>
         </ul>
@@ -297,12 +297,12 @@
         document.getElementById('checkbox').checked = true;
 
         function onlyOne(checkbox) {
-            var checkboxes = document.getElementsByName('checkbox');
+            var checkboxes = document.getElementsByName('product_detail_id');
             checkboxes.forEach((item) => {
                 if (item !== checkbox) item.checked = false;
             });
         }
-        
+
     </script>
 </body>
 

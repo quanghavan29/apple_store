@@ -41,6 +41,7 @@ exports.findProductDetail = async function(product_id, version, color) {
     return await dbconfig.select('SELECT * FROM product p ' +
         'join product_detail pd on p.product_id = pd.product_id ' +
         'join specifications spec on pd.specifications_id = spec.specifications_id ' +
+        'join category c on p.category_id = c.category_id ' +
         'where p.product_id = \'' + product_id + '\' and pd.color = \'' + color + '\' and pd.version = \'' + version + '\'');
 }
 
