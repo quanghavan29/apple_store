@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/product_detail.css">
+    <link rel="stylesheet" href="css/modal-cart.css">
 </head>
 
 <body>
@@ -67,7 +68,8 @@
                                 class="item itemTab {{#if isActive}} active {{/if}} "
                                 data-gallery-id="color-images-gallery" data-color-id="12" data-is-full-spec="False"
                                 data-color-order-id="0">
-                                <a href="../product-detail?product_detail_id={{product_detail_id}}&product_id={{product_id}}&color={{color}}&version={{version}}">
+                                <a
+                                    href="../product-detail?product_detail_id={{product_detail_id}}&product_id={{product_id}}&color={{color}}&version={{version}}">
                                     <div class="item-border">
                                         <img src="../images/product/intro/{{image_intro}}" alt="Tr&#x1EAF;ng" />
                                     </div>
@@ -143,7 +145,8 @@
                 <div class="scrolling_inner">
                     <div class="box03 group desk">
                         {{#each this.versions}}
-                        <a href="../product-detail?product_detail_id={{product_detail_id}}&product_id={{product_id}}&color={{color}}&version={{version}}" data-index="0" class="box03__item item 
+                        <a href="../product-detail?product_detail_id={{product_detail_id}}&product_id={{product_id}}&color={{color}}&version={{version}}"
+                            data-index="0" class="box03__item item 
                         {{#if isActive}} act {{/if}}">{{version}}</a>
                         {{/each}}
                     </div>
@@ -232,7 +235,7 @@
                                 </div>
                             </div>
                         </div>
-                        <span class="con_hang only">C&#xF2;n h&#xE0;ng</span>
+                        <span class="con_hang only">Còn hàng</span>
                         <script>
                             setTimeout(function () {
                                 document.querySelectorAll(".block-button").forEach(function (item) {
@@ -244,7 +247,7 @@
                             }, 100);
                         </script>
                         <div class="block-button normal hide">
-                            <a href="#" class="btn-buynow jsBuy">MUA NGAY</a>
+                            <a href="#" class="btn-buynow jsBuy" id="btn-ordered">MUA NGAY</a>
                             <a href="#" class="btn-ins">
                                 MUA TRẢ GÓP 0%
                                 <span>Duyệt hồ sơ trong 5 phút</span>
@@ -261,7 +264,46 @@
                 <div class="border7"></div>
             </div>
         </div>
+        <!-- Buy -->
     </section>
+
+    <!-- Modal Cart -->
+    {{> modal-cart}}
+
+    <script>
+
+        document.getElementById("btn-ordered").onclick = function () {
+            document.getElementById("modal-cart").style.display = 'block';
+        }
+
+        document.getElementById("exit-modal-cart").onclick = function () {
+            document.getElementById("modal-cart").style.display = 'none';
+        }
+
+        document.getElementById('modal-plus').onclick = function () {
+            let quantity = parseInt(document.getElementById("modal-quantity").value);
+            if (quantity < 5) {
+                document.getElementById("modal-quantity").value = quantity + 1;
+            }
+        }
+
+        document.getElementById('modal-minus').onclick = function () {
+            let quantity = parseInt(document.getElementById("modal-quantity").value);
+            if (quantity > 1) {
+                document.getElementById("modal-quantity").value = quantity - 1;
+            }
+        }
+
+        document.getElementById('checkbox').checked = true;
+
+        function onlyOne(checkbox) {
+            var checkboxes = document.getElementsByName('checkbox');
+            checkboxes.forEach((item) => {
+                if (item !== checkbox) item.checked = false;
+            });
+        }
+        
+    </script>
 </body>
 
 </html>

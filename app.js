@@ -1,8 +1,10 @@
 const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
+const bodyParser = require('body-parser');
 
 const app = express();
+app.use(bodyParser.urlencoded({ extended: true }))
 app.set('trust proxy', 1) // trust first proxy
 app.use(session({
     secret: 'keyboard cat',
@@ -38,4 +40,15 @@ app.use('/fillter', fillterRouter);
 
 app.listen(3000, () => {
     console.log('http://localhost:3000/home');
+})
+
+app.post('/add-to-cart', (req, res) => {
+    console.log(req.body.product_detail_id);
+    console.log(req.body.quantity);
+})
+
+app.get('/cart', (req, res) => {
+    res.render('cart', {
+        layout: false,
+    });
 })
