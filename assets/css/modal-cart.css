@@ -123,6 +123,10 @@
     cursor: pointer;
 }
 
+a:hover {
+    text-decoration: underline;
+}
+
 .seecart {
     box-sizing: border-box;
     margin: 0;

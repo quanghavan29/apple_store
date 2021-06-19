@@ -62,6 +62,15 @@ exports.findAllColor = async function(product_id) {
         'group by pd.image_intro');
 }
 
+// Find product detail by color and version => return product detail page
+exports.findProductDetailById = async function(product_detail_id) {
+    return await dbconfig.select('SELECT * FROM product p ' +
+        'join product_detail pd on p.product_id = pd.product_id ' +
+        'join specifications spec on pd.specifications_id = spec.specifications_id ' +
+        'join category c on p.category_id = c.category_id ' +
+        'where pd.product_detail_id = \'' + product_detail_id + '\'');
+}
+
 exports.count = async function() {
     const result = await dbconfig.select('SELECT COUNT(*) AS total FROM product');
     return result[0].total;

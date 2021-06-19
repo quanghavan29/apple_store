@@ -21,7 +21,11 @@
                 <div id="search-result"></div>
             </form>
             <a href="../cart" class="header__cart menu-info">
+                {{#if isCartEmpty}}
                 <i class="icon-cart"></i>
+                {{else}}
+                <i class="cart_quantity"><span style="color: white;">{{total_order_quantity}}<span></i>
+                {{/if}}
                 <span>Giỏ hàng</span>
             </a>
             <a href="#" class="header__history">Lịch sử mua hàng</a>
