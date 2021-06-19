@@ -54,7 +54,8 @@
                                     <aside><label style="color: #333333;">Color: {{color}}</label>
                                     </aside>
                                 </div>
-                                <a href="../detele-cart-item?product_detail_id={{product_detail_id}}" style="color: #F30C28;"> Xóa </a>
+                                <a href="../detele-cart-item?product_detail_id={{product_detail_id}}"
+                                    style="color: #F30C28;"> Xóa </a>
                             </div>
                             <div class="right" style="position: absolute; right: 0px;">
                                 <div style="padding-left: 15px; padding-bottom: 15px;">
@@ -64,14 +65,18 @@
                                 <div class="choosenumber">
                                     <div class="minus" style="pointer-events: all;">
                                         <div style="border: none; cursor: pointer;" id="modal-minus">
-                                            <img src="../images/minus.jpg" width="100%">
+                                            <a
+                                                href="../update-cart-item?product_detail_id={{product_detail_id}}&select=minus">
+                                                <img src="../images/minus.jpg" width="100%"></a>
                                         </div>
                                     </div>
                                     <input type="text" class="number" value="{{order_quantity}}" style="border: none;"
                                         id="modal-quantity" name="quantity" />
                                     <div class="plus" style="pointer-events: all;">
                                         <div style="border: none; cursor: pointer;" id="modal-plus">
-                                            <img src="../images/plus.jpg" width="100%">
+                                            <a
+                                                href="../update-cart-item?product_detail_id={{product_detail_id}}&select=plus">
+                                                <img src="../images/plus.jpg" width="100%"></a>
                                         </div>
                                     </div>
                                 </div>

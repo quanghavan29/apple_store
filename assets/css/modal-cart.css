@@ -20,6 +20,30 @@
     height: 120%;
 }
 
+.cart_quantity {
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-size: 300px 200px;
+    background-position: -175px 0;
+    height: 18px;
+    width: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    box-sizing: border-box;
+    background-color: tomato;
+    border-radius: 50%;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: bold;
+    text-indent: 0;
+    background-image: none;
+    line-height: 18px;
+    text-align: center;
+    margin-right: 5px;
+}
+
 .choose-promo {
     font: 14px/18px Arial, Helvetica, sans-serif;
     color: #333;

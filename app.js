@@ -22,7 +22,11 @@ app.use(async function (req, res, next) {
     let cart_list = req.session.cart_list || [];
     let isCartEmpty = cart_list.length === 0;
     res.locals.isCartEmpty = isCartEmpty;
-
+    let total_order_quantity = 0;
+    cart_list.forEach(item => {
+        total_order_quantity += item.order_quantity;
+    });
+    res.locals.total_order_quantity = total_order_quantity;
     next();
 });
 
@@ -45,6 +49,17 @@ app.use('/cart', cartRouter);
 // call router: detele cart item router
 const deteleCartItemRouter = require('./src/routes/deleteCartItem.router');
 app.use('/detele-cart-item', deteleCartItemRouter);
+
+// call router: update cart item router
+const updateCartItemRouter = require('./src/routes/updateCartItem.router');
+app.use('/update-cart-item', updateCartItemRouter);
+
+app.get('/order', (req, res) => {
+    res.render('order', {
+        layout: false,
+        icon_list_active: true, 
+    });
+});
 
 app.listen(8000, () => {
     console.log('http://localhost:8000/home');

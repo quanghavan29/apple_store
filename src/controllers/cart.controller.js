@@ -22,7 +22,6 @@ exports.cart = async function (req, res) {
         } else {
             item.present_price = parseInt(Math.ceil((item.price - (item.price * item.sale / 100))) / 1000) + '.0' + Math.ceil((item.price - (item.price * item.sale / 100))) % 1000;
         }
-        total_order_quantity += parseInt(item.order_quantity);
         total_amount_ordered += ((item.price * item.order_quantity) - (item.price * item.order_quantity * item.sale / 100));
     });
     // format total_amout_ordered
@@ -31,12 +30,10 @@ exports.cart = async function (req, res) {
     } else {
         total_amount_ordered = parseInt(Math.ceil(total_amount_ordered) / 1000) + '.0' + Math.ceil(total_amount_ordered) % 1000;
     }
-    session.total_order_quantity = total_order_quantity;
     res.render('cart', {
         layout: false,
         cart_list: cart_list,
         cartEmpty: cart_list.length === 0,
-        total_order_quantity: total_order_quantity,
         total_amount_ordered: total_amount_ordered
     });
 }
@@ -49,7 +46,16 @@ exports.addToCart = async function (req, res) {
     // get item detail by id
     let dataRow = await Product.findProductDetailById(product_detail_id);
     let item = dataRow[0];
-    item.order_quantity = quantity; // set quantity of item
+
+    cart_list.forEach(item => {
+        if (item.product_detail_id === product_detail_id) {
+            item.order_quantity += quantity;
+            req.session.cart_list = cart_list;
+            res.redirect('cart');
+        }
+    });
+
+    item.order_quantity = quantity;
     // add item to cart
     cart_list.push(item);
     req.session.cart_list = cart_list;
@@ -68,5 +74,25 @@ exports.deleteFromCart = async (req, res) => {
     if (index !== -1) cart_list.splice(index, 1);
 
     session.cart_list = cart_list;
+    res.redirect('cart');
+}
+
+// update quantity of item in cart
+exports.updateQuantity = async (req, res) => {
+    let product_detail_id = req.query.product_detail_id;
+    let select = req.query.select;
+    let cart_list = req.session.cart_list;
+    cart_list.forEach(item => {
+        if (item.product_detail_id === product_detail_id) {
+            if (select === 'plus') {
+                item.order_quantity += 1;
+            } else if (select === 'minus') {
+                if (item.order_quantity > 1) {
+                    item.order_quantity -= 1;
+                }
+            }
+        }
+    });
+    req.session.cart_list = cart_list;
     res.redirect('cart');
 }
