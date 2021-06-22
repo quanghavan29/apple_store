@@ -1,6 +1,7 @@
 const Product = require('../model/product.model');
 const Category = require('../model/category.model');
 const session = require('express-session');
+const validation = require('../validation/validation');
 
 // return home page
 exports.home = async function (req, res) {
@@ -44,16 +45,10 @@ exports.home = async function (req, res) {
             p.isSale = true;
         }
         // format price
-        if (parseInt(p.price % 1000) >= parseInt(100)) {
-            p.old_price = parseInt(p.price / 1000) + '.' + p.price % 1000;
-        } else {
-            p.old_price = parseInt(p.price / 1000) + '.0' + p.price % 1000;
-        }
-        if (parseInt(Math.ceil((p.price - (p.price * p.sale / 100))) % 1000) >= parseInt(100)) {
-            p.present_price = parseInt(Math.ceil((p.price - (p.price * p.sale / 100))) / 1000) + '.' + Math.ceil((p.price - (p.price * p.sale / 100))) % 1000;
-        } else {
-            p.present_price = parseInt(Math.ceil((p.price - (p.price * p.sale / 100))) / 1000) + '.0' + Math.ceil((p.price - (p.price * p.sale / 100))) % 1000;
-        }
+        // format price
+        p.old_price = validation.formatPrice(p.price);
+        let present_price = Math.ceil((p.price - (p.price * p.sale / 100)));
+        p.present_price = validation.formatPrice(present_price);
     }
 
     res.render('home', {

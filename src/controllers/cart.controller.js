@@ -1,5 +1,6 @@
 const session = require('express-session');
 const Product = require('../model/product.model');
+const validation = require('../validation/validation');
 
 // add item to cart 
 exports.cart = async function (req, res) {
@@ -12,24 +13,15 @@ exports.cart = async function (req, res) {
             item.isSale = true;
         }
         // format price
-        if (parseInt(item.price % 1000) >= parseInt(100)) {
-            item.old_price = parseInt(item.price / 1000) + '.' + item.price % 1000;
-        } else {
-            item.old_price = parseInt(item.price / 1000) + '.0' + item.price % 1000;
-        }
-        if (parseInt(Math.ceil((item.price - (item.price * item.sale / 100))) % 1000) >= 100) {
-            item.present_price = parseInt(Math.ceil((item.price - (item.price * item.sale / 100))) / 1000) + '.' + Math.ceil((item.price - (item.price * item.sale / 100))) % 1000;
-        } else {
-            item.present_price = parseInt(Math.ceil((item.price - (item.price * item.sale / 100))) / 1000) + '.0' + Math.ceil((item.price - (item.price * item.sale / 100))) % 1000;
-        }
-        total_amount_ordered += ((item.price * item.order_quantity) - (item.price * item.order_quantity * item.sale / 100));
+        // format price
+        item.old_price = validation.formatPrice(item.price);
+        let present_price = Math.ceil((item.price - (item.price * item.sale / 100)));
+        item.present_price = validation.formatPrice(present_price);
+
+        total_amount_ordered += Math.ceil(((item.price * item.order_quantity) - (item.price * item.order_quantity * item.sale / 100)));
     });
     // format total_amout_ordered
-    if (parseInt(Math.ceil(total_amount_ordered) % 1000) >= 100) {
-        total_amount_ordered = parseInt(Math.ceil(total_amount_ordered) / 1000) + '.' + Math.ceil(total_amount_ordered) % 1000;
-    } else {
-        total_amount_ordered = parseInt(Math.ceil(total_amount_ordered) / 1000) + '.0' + Math.ceil(total_amount_ordered) % 1000;
-    }
+    total_amount_ordered = validation.formatPrice(total_amount_ordered);
     res.render('cart', {
         layout: false,
         cart_list: cart_list,
@@ -67,7 +59,7 @@ exports.deleteFromCart = async (req, res) => {
     let cart_list = req.session.cart_list || [];
     let product_detail_id = req.query.product_detail_id;
     // find index of item
-    var index = cart_list.findIndex(function(item) {
+    var index = cart_list.findIndex(function (item) {
         return item.product_detail_id === product_detail_id;
     })
     // delete item

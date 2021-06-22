@@ -16,9 +16,9 @@
 
     <div class="container">
         <div class="left">
-            <a href="" class="{{#if this.icon_list_active}} active {{/if}}">
+            <a href="../order" class="active">
                 Danh sách đơn hàng đã mua</a>
-            <a href="" class="">Thông tin cá nhân và sổ địa chỉ</a>
+            <a href="../profile" class="">Thông tin cá nhân và sổ địa chỉ</a>
         </div>
 
         <div class="right">
@@ -67,30 +67,37 @@
                             <th>Ngày đặt mua</th>
                             <th>Trạng thái</th>
                         </tr>
+                        {{#each this.orders}}
                         <tr class="" data-id="0">
                             <td>
-                                <a href="">#03252SO2007064596</a>
+                                <a href="">#{{order_id}}</a>
                             </td>
                             <td>
-                                <a href=""><img src="../images/product/intro/iPhone_12_Pro.jpg"
+                                <a href=""><img src="../images/product/intro/{{image_intro}}"
                                         style="width: 50px; height: 50px;"></a>
                                 <div>
-                                    <a href="">Ốp lưng iPhone 11 Nắp gập
-                                        Flip TKSF1005 MEEKER Jean Navy và <b>1 s.phẩm</b> khác</a>
+                                    <a>{{product_name}} {{version}}
+                                        {{#if isOnlyOneItem}} {{else}} và <b>{{totalItem}} sản phẩm</b> khác {{/if}}
+                                    </a>
                                     <div class="link">
                                         <a href="">Xem chi tiết</a>
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                <b>152.000₫</b>
+                                <b>{{total_amount}}.000₫</b>
                             </td>
-                            <td><span>06/07/2020</span></td>
+                            <td><span>{{order_date}}</span></td>
                             <td>
+                                {{#if isSuccess}}
                                 <i class="success">Đã nhận hàng</i>
+                                {{/if}}
+                                {{#if isPending}}
+                                <i class="" style="color: #F29339;">Đang giao hàng</i>
+                                {{/if}}
                             </td>
                         </tr>
-
+                        {{/each}}
                     </tbody>
                 </table>
             </div>

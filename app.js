@@ -54,12 +54,16 @@ app.use('/detele-cart-item', deteleCartItemRouter);
 const updateCartItemRouter = require('./src/routes/updateCartItem.router');
 app.use('/update-cart-item', updateCartItemRouter);
 
-app.get('/order', (req, res) => {
-    res.render('order', {
+// call router: update cart item router
+const orderRouter = require('./src/routes/order.router');
+app.use('/order', orderRouter);
+
+app.get('/profile', (req, res) => {
+    res.render('profile', {
         layout: false,
-        icon_list_active: true, 
     });
 });
+
 
 app.listen(8000, () => {
     console.log('http://localhost:8000/home');

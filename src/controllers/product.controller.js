@@ -1,4 +1,5 @@
 const Product = require('../model/product.model');
+const validation = require('../validation/validation');
 
 // return product detail page
 exports.detail = async function (req, res) {
@@ -17,16 +18,9 @@ exports.detail = async function (req, res) {
         product.isSale = true;
     }
     // format price
-    if (parseInt(product.price % 1000) >= parseInt(100)) {
-        product.old_price = parseInt(product.price / 1000) + '.' + product.price % 1000;
-    } else {
-        product.old_price = parseInt(product.price / 1000) + '.0' + product.price % 1000;
-    }
-    if (parseInt(Math.ceil((product.price - (product.price * product.sale / 100))) % 1000) >= 100) {
-        product.present_price = parseInt(Math.ceil((product.price - (product.price * product.sale / 100))) / 1000) + '.' + Math.ceil((product.price - (product.price * product.sale / 100))) % 1000;
-    } else {
-        product.present_price = parseInt(Math.ceil((product.price - (product.price * product.sale / 100))) / 1000) + '.0' + Math.ceil((product.price - (product.price * product.sale / 100))) % 1000;
-    }
+    product.old_price = validation.formatPrice(product.price);
+    let present_price = Math.ceil((product.price - (product.price * product.sale / 100)));
+    product.present_price = validation.formatPrice(present_price);
 
     let present_version = undefined;
     let present_color = undefined;
