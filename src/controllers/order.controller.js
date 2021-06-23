@@ -2,9 +2,11 @@ const session = require('express-session');
 const Order = require('../model/order.model');
 const Item = require('../model/item.model');
 const validation = require('../validation/validation');
+const User = require('../model/user.model');
 
 exports.get = async function (req, res) {
-    let orders = await Order.getAllByUser('0968904962');
+    let userSession = session.userSession;
+    let orders = await Order.getAllByUser(userSession.email);
 
     for (order of orders) {
         order.total_amount = validation.formatPrice(order.total_amount);
@@ -16,14 +18,29 @@ exports.get = async function (req, res) {
         order.isOnlyOneItem = order.totalItem === 1;
     }
 
-    console.log(orders)
     res.render('order', {
         layout: false,
-        orders: orders
+        orders: orders,
+        userSession: userSession,
     });
 };
 
 exports.post = async function (req, res) {
+
+    const user = {
+        "full_name": req.body.full_name,
+        "email": req.body.email,
+        "phone": req.body.phone,
+        "address": req.body.address,
+    }
+
+    const dataRow = await User.getUserByEmail(user.email);
+    let UserByEmail = dataRow[0];
+    if (!UserByEmail) {
+        //if email does not exist => add new user
+        await User.addNewUser(user);
+    }
+
     let cart_list = req.session.cart_list || [];
     let total_amount_ordered = 0;
     cart_list.forEach(item => {
@@ -36,7 +53,10 @@ exports.post = async function (req, res) {
         "order_date": today,
         "status": 'pending',
         "total_amount": total_amount_ordered,
-        "user_id": 1
+        "email": user.email,
+        "address": user.address,
+        "phone": user.phone,
+        "full_name": user.full_name,
     }
     await Order.add(order);
     // get order id of last inserted
@@ -51,6 +71,7 @@ exports.post = async function (req, res) {
         }
         Item.add(newItem);
     });
-
-    res.send(req.body);
+    req.session.cart_list = null;
+    session.userSession = user;
+    res.redirect('order');
 }

@@ -12,12 +12,11 @@ exports.getOrderIdLastInserted  = async function() {
 }
 
 // get all ordered by user
-exports.getAllByUser = async function(phone) {
+exports.getAllByUser = async function(email) {
     return await dbconfig.select('SELECT distinct * FROM ordered o ' +
         'join item i on o.order_id = i.order_id ' +
-        'join users u on u.user_id = o.user_id ' +
         'join product_detail pd on i.product_detail_id = pd.product_detail_id ' +
         'join product p on p.product_id = pd.product_id ' +
-        'where phone = \'' + phone + '\' ' +
+        'where o.email = \'' + email + '\' ' +
         'group by o.order_id');
 }

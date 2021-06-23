@@ -24,8 +24,8 @@
 
         <div class="right">
             <div class="user" data-customer="1087356470">
-                Chào anh
-                <b>HÀ VĂN QUANG</b> - <b>0968904962</b>
+                Chào Bạn
+                <b>{{this.userSession.full_name}}</b> - <b>{{this.userSession.phone}}</b>
                 <a href="" class="logout-h">Thoát tài khoản</a>
                 <a class="about-s">|</a>
                 <a class="feed-back">
@@ -40,8 +40,8 @@
                 <h2>Phản hồi, góp ý lịch sử mua hàng</h2>
                 <div class="infor-user">
                     <h3>Thông tin khách hàng:</h3>
-                    <span><span class="sex-f" data-id="1">Anh:</span> <b class="name-f">HÀ VĂN QUANG</b> - <b
-                            class="phone-f">0968904962</b></span>
+                    <span><span class="sex-f" data-id="1">Anh:</span> <b class="name-f">{{this.userSession.full_name}}</b> - <b
+                            class="phone-f">{{this.userSession.phone}}</b></span>
                 </div>
                 <div class="feed-user">
                     <h3>Thông tin phản hồi góp ý:</h3>
@@ -58,20 +58,20 @@
             <div class="list" id="list_order">
                 <h1 style="font-size: 16px; padding-bottom: 10px;">THÔNG TIN CÁ NHÂN</h1>
                 <div class="infor-customer">
-                    <div class="sex-customer gender">
+                    {{!-- <div class="sex-customer gender">
                         <input type="radio" name="gender" value="male" style="cursor: pointer;" checked="true"
                             onclick="onlyOne(this)"> Anh
                         <input type="radio" name="gender" value="female" style="margin-left: 10px; cursor: pointer;"
                             onclick="onlyOne(this)">
                         Chị
-                    </div>
-                    <div class="fillinform">
+                    </div> --}}
+                    <div class="fillinform" style="padding-top: 5px;">
                         <div class="fillname" style="padding-left: 7px;"><input placeholder="Họ và Tên" maxlength="50"
-                                class="capitalize untouched" name="fullName" required="required" value="Hà Văn Quang"/>
+                                class="capitalize untouched" name="fullName" required="required" value="{{this.userSession.full_name}}"/>
                             <!---->
                         </div>
                         <div class="fillname"><input placeholder="Email" type="email" class="untouched" name="email"
-                                required="required" readonly="readonly" value="quanghavan29@gmail.com"/>
+                                required="required" readonly="readonly" value="{{this.userSession.email}}"/>
                             <!---->
                         </div>
                     </div>
@@ -82,12 +82,12 @@
                             <h4 style="font-size: 14px; padding-bottom: 12px;">ĐỊA CHỈ NHẬN HÀNG</h4>
                             <div class=""><input placeholder="Số điện thoại"
                                     class="capitalize untouched pristine required" name="phone" 
-                                    required="required" readonly="readonly" value="0968904962"/>
+                                    required="required" readonly="readonly" value="{{this.userSession.phone}}"/>
                                 <!---->
                             </div>
                             <div class="" style="margin-top: 10px;"><input placeholder="Địa chỉ nhận hàng"
                                     class="capitalize untouched pristine required" name="address" 
-                                    required="required" value="Lai Cách - Xuân Giang - Sóc Sơn - Hà Nội"/>
+                                    required="required" value="{{this.userSession.address}}"/>
                                 <!---->
                             </div>
                         </div>

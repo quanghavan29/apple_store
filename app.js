@@ -27,6 +27,12 @@ app.use(async function (req, res, next) {
         total_order_quantity += item.order_quantity;
     });
     res.locals.total_order_quantity = total_order_quantity;
+    let isAuthenticated = false;
+    if (session.userSession) {
+        res.locals.lcIsAuthenticated = true;
+        res.locals.lcUserSessison = session.userSession;
+    }
+
     next();
 });
 
@@ -58,12 +64,17 @@ app.use('/update-cart-item', updateCartItemRouter);
 const orderRouter = require('./src/routes/order.router');
 app.use('/order', orderRouter);
 
-app.get('/profile', (req, res) => {
-    res.render('profile', {
-        layout: false,
-    });
-});
+// call router: profile router
+const profileRouter = require('./src/routes/profile.router');
+app.use('/profile', profileRouter);
 
+// call router: logout router
+const logoutRouter = require('./src/routes/logout.router');
+app.use('/logout', logoutRouter);
+
+// call router: goToOrdered router
+const goToOrderedRouter = require('./src/routes/goToOrdered.router');
+app.use('/goToOrdered', goToOrderedRouter);
 
 app.listen(8000, () => {
     console.log('http://localhost:8000/home');
