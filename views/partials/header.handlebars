@@ -28,7 +28,11 @@
                 {{/if}}
                 <span>Giỏ hàng</span>
             </a>
+            {{#if lcIsAuthenticated}}
+            <a href="../goToOrdered" class="header__history">Xem Đơn Hàng</a>
+            {{else}}
             <a href="../goToOrdered" class="header__history">Lịch sử mua hàng</a>
+            {{/if}}
             <div class="bordercol"></div>
             <a data-cate="0" data-place="1589" href="#" class="header__hot">
                 <p class="dotnew"><span class="animation"></span></p>Cộng Tác Bán Hàng Cùng Phone Store

@@ -76,6 +76,11 @@ app.use('/logout', logoutRouter);
 const goToOrderedRouter = require('./src/routes/goToOrdered.router');
 app.use('/goToOrdered', goToOrderedRouter);
 
+// call router: login router
+const loginRouter = require('./src/routes/login.router');
+app.use('/login', loginRouter);
+
+
 app.listen(8000, () => {
     console.log('http://localhost:8000/home');
 })

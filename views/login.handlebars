@@ -18,8 +18,9 @@
         <div class="d1 step1">
             <img src="../images/i1.png" style="margin-top: 30px; margin-bottom: 35px;">
             <span style="font-size: 20px;;">Tra cứu thông tin đơn hàng</span>
-            <form>
-                <input type="tel" name="email" placeholder="Nhập Email mua hàng của bạn"
+            <p style="color: red; font-size: 16px; margin-top: 15px;">{{this.notFoundEmail}}</p>
+            <form action="../login" method="POST">
+                <input type="tel" name="email" placeholder="Nhập Email Mua Hàng Của Bạn"
                     class="input_email" style="margin-top: 25px;">
                 <label class="hide"></label>
                 <button type="submit" class="btn" style="margin-bottom: 40px;">Tiếp tục</button>
