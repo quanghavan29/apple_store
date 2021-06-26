@@ -13,7 +13,6 @@ exports.cart = async function (req, res) {
             item.isSale = true;
         }
         // format price
-        // format price
         item.old_price = validation.formatPrice(item.price);
         let present_price = Math.ceil((item.price - (item.price * item.sale / 100)));
         item.present_price = validation.formatPrice(present_price);

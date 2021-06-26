@@ -55,6 +55,7 @@
 
             <div class="result"></div>
 
+            <form action="../profile" method="POST">
             <div class="list" id="list_order">
                 <h1 style="font-size: 16px; padding-bottom: 10px;">THÔNG TIN CÁ NHÂN</h1>
                 <div class="infor-customer">
@@ -67,7 +68,7 @@
                     </div> --}}
                     <div class="fillinform" style="padding-top: 5px;">
                         <div class="fillname" style="padding-left: 7px;"><input placeholder="Họ và Tên" maxlength="50"
-                                class="capitalize untouched" name="fullName" required="required" value="{{this.userSession.full_name}}"/>
+                                class="capitalize untouched" name="full_name" required="required" value="{{this.userSession.full_name}}"/>
                             <!---->
                         </div>
                         <div class="fillname"><input placeholder="Email" type="email" class="untouched" name="email"
@@ -96,6 +97,7 @@
 
                 <button type="submit" class="ordered"><b style="text-transform:uppercase">Cập Nhật</b></button>
             </div>
+            </form>
         </div>
     </div>
 </body>

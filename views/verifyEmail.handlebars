@@ -25,7 +25,7 @@
             <form action="../verifyEmail" method="POST">
                 <input type="hidden" value="{{email}}" name="email">
                 <input type="tel" name="codeOTP" placeholder="Nhập mã xác nhận gồm 4 chữ số" maxlength="4"
-                    autocomplete="one-time-code" class="input_code">
+                    autocomplete="one-time-code" class="input_code" required="required">
                 <div>
                     <label style="color: #FF0011;">{{this.message}}</label>
                 </div>

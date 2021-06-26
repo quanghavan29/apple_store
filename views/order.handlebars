@@ -70,17 +70,17 @@
                         {{#each this.orders}}
                         <tr class="" data-id="0">
                             <td>
-                                <a href="">#{{order_id}}</a>
+                                <a href="../orderedDetail?order_id={{order_id}}">#{{order_id}}</a>
                             </td>
                             <td>
-                                <a href=""><img src="../images/product/intro/{{image_intro}}"
+                                <a href="../orderedDetail?order_id={{order_id}}"><img src="../images/product/intro/{{image_intro}}"
                                         style="width: 50px; height: 50px;"></a>
                                 <div>
                                     <a>{{product_name}} {{version}}
                                         {{#if isOnlyOneItem}} {{else}} và <b>{{totalItem}} sản phẩm</b> khác {{/if}}
                                     </a>
                                     <div class="link">
-                                        <a href="">Xem chi tiết</a>
+                                        <a href="../orderedDetail?order_id={{order_id}}">Xem chi tiết</a>
                                     </div>
                                 </div>
                             </td>

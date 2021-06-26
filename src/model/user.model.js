@@ -10,3 +10,11 @@ exports.getUserByEmail = async function(email) {
 exports.addNewUser = async function(user) {
     return await dbconfig.add('users', user);
 }
+
+// update information of user
+exports.update = async function(user) {
+    const condition = {
+        email: user.email,
+    }
+    return await dbconfig.update('users', user, condition);
+}

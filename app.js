@@ -84,6 +84,9 @@ app.use('/login', loginRouter);
 const verifyEmailRouter = require('./src/routes/verifyEmail.router');
 app.use('/verifyEmail', verifyEmailRouter);
 
+// call router: orderedDetail router
+const orderedDetailRouter = require('./src/routes/orderedDetail.router');
+app.use('/orderedDetail', orderedDetailRouter);
 
 app.listen(8000, () => {
     console.log('http://localhost:8000/home');

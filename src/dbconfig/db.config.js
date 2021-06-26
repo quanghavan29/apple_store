@@ -18,8 +18,20 @@ module.exports = {
 
     add: function(table, model) {
         return new Promise(function (resolve, reject) {
-            const query = 'INSERT INTO ' + table + ' set ?';
+            const query = 'INSERT INTO ' + table + ' SET ?';
             pool.query(query, model, function (error, results) {
+                if (error) {
+                    return reject(error);
+                }
+                resolve(results);
+            })
+        })
+    },
+    
+    update: function(table, model, condition) {
+        return new Promise(function (resolve, reject) {
+            const query = 'UPDATE ' + table + ' SET ? WHERE ?';
+            pool.query(query, [model, condition], function (error, results) {
                 if (error) {
                     return reject(error);
                 }
