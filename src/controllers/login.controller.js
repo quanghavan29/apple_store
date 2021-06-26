@@ -17,7 +17,6 @@ exports.post = async function (req, res) {
             notFoundEmail: "Email của bạn chưa đăng kí mua hàng bên hệ thống!",
         });
     } else {
-        session.userSession = user;
-        res.redirect('order');
+        res.redirect('verifyEmail?email=' + email);
     }
 }

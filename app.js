@@ -80,6 +80,10 @@ app.use('/goToOrdered', goToOrderedRouter);
 const loginRouter = require('./src/routes/login.router');
 app.use('/login', loginRouter);
 
+// call router: verifyEmail router
+const verifyEmailRouter = require('./src/routes/verifyEmail.router');
+app.use('/verifyEmail', verifyEmailRouter);
+
 
 app.listen(8000, () => {
     console.log('http://localhost:8000/home');

@@ -60,3 +60,24 @@
     background-image: url(../images/icon-phone-blue.png);
     background-size: 14px 21px;
 }
+
+.input_code {
+    font: 14px/18px Arial,Helvetica,sans-serif;
+    color: #333;
+    outline: none;
+    -webkit-appearance: none;
+    display: block;
+    margin: auto;
+    font-family: ROBOTO LIGHT;
+    border: 1px solid #e0e0e0;
+    border-radius: 100px;
+    width: 302px;
+    height: 48px;
+    padding: 0 50px;
+    background-repeat: no-repeat;
+    background-position: 25px center;
+    margin-bottom: 15px;
+    font-size: 15px;
+    background-image: url(../images/icon-phone-blue.png);
+    background-size: 14px 21px;
+}

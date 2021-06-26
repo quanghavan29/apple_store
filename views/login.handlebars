@@ -20,24 +20,12 @@
             <span style="font-size: 20px;;">Tra cứu thông tin đơn hàng</span>
             <p style="color: red; font-size: 16px; margin-top: 15px;">{{this.notFoundEmail}}</p>
             <form action="../login" method="POST">
-                <input type="tel" name="email" placeholder="Nhập Email Mua Hàng Của Bạn"
-                    class="input_email" style="margin-top: 25px;">
+                <input type="email" name="email" placeholder="Nhập Email Mua Hàng Của Bạn"
+                    class="input_email" style="margin-top: 25px;" required="required">
                 <label class="hide"></label>
-                <button type="submit" class="btn" style="margin-bottom: 40px;">Tiếp tục</button>
+                <button type="submit" class="btn" style="margin-bottom: 40px; cursor: pointer;">Tiếp tục</button>
             </form>
         </div>
-        {{!-- <div class="d2 step2 hide">
-            <span class="s1">Mã xác nhận đã được gửi đến số điện thoại <b></b></span>
-            <span class="s2 hide">Mã xác nhận đã được gửi lại</span>
-            <form>
-                <input type="tel" name="txtOTP" placeholder="Nhập mã xác nhận gồm 4 chữ số" maxlength="4"
-                    autocomplete="one-time-code">
-                <label class="hide"></label>
-                <button type="submit" class="btn">Tiếp tục</button>
-            </form>
-            <a class="resend-sms" href="javascript:"></a>
-            <a href="" class="btnChangeNum">Thay đổi số điện thoại</a>
-        </div> --}}
     </div>
 </body>
 
