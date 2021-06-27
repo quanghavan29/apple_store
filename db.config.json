@@ -1,9 +1,9 @@
 {
   "mysql" : {
-    "host"     : "localhost",
-    "user"     : "root",
-    "password" : "123456",
-    "database" : "apple_store",
+    "host"     : "b9wu1iw2keddr1j1tg6n-mysql.services.clever-cloud.com",
+    "user"     : "uc5ielkecduh1ywb",
+    "password" : "z06lqpgLiKAd5theCaT1",
+    "database" : "b9wu1iw2keddr1j1tg6n",
     "connectionLimit" : 50
   }
 }

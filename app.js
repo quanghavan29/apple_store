@@ -88,6 +88,7 @@ app.use('/verifyEmail', verifyEmailRouter);
 const orderedDetailRouter = require('./src/routes/orderedDetail.router');
 app.use('/orderedDetail', orderedDetailRouter);
 
-app.listen(8000, () => {
+const PORT = process.env.PORT || 3000
+app.listen(PORT, () => {
     console.log('http://localhost:8000/home');
 })
