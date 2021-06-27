@@ -36,6 +36,10 @@ app.use(async function (req, res, next) {
     next();
 });
 
+app.get('/', function (req, res) {
+    res.redirect('home')
+})
+
 // call router: home router
 const homeRouter = require('./src/routes/home.router');
 app.use('/home', homeRouter);
